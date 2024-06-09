@@ -35,8 +35,8 @@ class _AppServiceClient implements AppServiceClient {
     )
             .compose(
               _dio.options,
-              //'/forecast.json?key=7b46ffb131da4cc4a60212247243005&q=${appPreferences.getLat()},${appPreferences.getLong()}&days=3&aqi=no&alerts=no&lang=${appPreferences.getLang()}',
-              '/forecast.json?key=7b46ffb131da4cc4a60212247243005&q=48.8567,2.3508&days=3&aqi=no&alerts=no&lang=en',
+              '/forecast.json?key=7b46ffb131da4cc4a60212247243005&q=${appPreferences.getLat()},${appPreferences.getLong()}&days=3&aqi=no&alerts=no&lang=${appPreferences.getLang()}',
+              //'/forecast.json?key=7b46ffb131da4cc4a60212247243005&q=48.8567,2.3508&days=3&aqi=no&alerts=no&lang=en',
               queryParameters: queryParameters,
               data: _data,
             )

@@ -6,6 +6,7 @@ import 'package:my_weather/core/networking/network_info.dart';
 import 'package:my_weather/features/home/data/datasources/remote_datasource.dart';
 import 'package:my_weather/features/home/data/repositories/weather_repository_impl.dart';
 import 'package:my_weather/features/home/domain/repositories/weather_repository.dart';
+import 'package:my_weather/features/home/domain/usecases/get_location_usecase.dart';
 import 'package:my_weather/features/home/domain/usecases/weather_by_location_usecase.dart';
 import 'package:my_weather/features/home/domain/usecases/weather_by_name_usecase.dart';
 import 'package:my_weather/features/home/presentation/bloc/home_bloc.dart';
@@ -45,13 +46,21 @@ Future<void> initAppModule() async {
       homeRemoteDatasource: instance(), networkInfo: instance()));
 }
 
+Future<void> initGetLocationModule() async {
+  if (!GetIt.I.isRegistered<GetLocationUsecase>()) {
+    instance.registerFactory<GetLocationUsecase>(
+        () => GetLocationUsecase(weatherRepository: instance()));
+    instance.registerFactory<HomeBloc>(() => HomeBloc(
+        weatherByLocationUsecase: instance(),
+        weatherByNameUsecase: instance(),
+        getLocationUsecase: instance()));
+  }
+}
+
 Future<void> initByLocationModule() async {
   if (!GetIt.I.isRegistered<WeatherByLocationUsecase>()) {
     instance.registerFactory<WeatherByLocationUsecase>(
         () => WeatherByLocationUsecase(weatherRepository: instance()));
-    instance.registerFactory<HomeBloc>(() => HomeBloc(
-        weatherByLocationUsecase: instance(),
-        weatherByNameUsecase: instance()));
   }
 }
 

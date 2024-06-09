@@ -45,9 +45,21 @@ class _HomeScreenState extends State<HomeScreen> {
       body: BlocBuilder<HomeBloc, HomeState>(
         builder: (context, state) {
           if (state is HomeLoadingState) {
-            return const Center(child: CircularProgressIndicator());
+            return Container(
+                height: double.infinity,
+                width: double.infinity,
+                decoration: const BoxDecoration(
+                  gradient: ColorManager.gradientBackgroundColor,
+                ),
+                child: const Center(child: CircularProgressIndicator()));
           } else if (state is HomeFailureState) {
-            return Center(child: Text(state.message));
+            return Container(
+                height: double.infinity,
+                width: double.infinity,
+                decoration: const BoxDecoration(
+                  gradient: ColorManager.gradientBackgroundColor,
+                ),
+                child: Center(child: Text(state.message)));
           } else if (state is HomeSuccessState) {
             return PageView.builder(
               controller: _pageController,
@@ -77,17 +89,17 @@ class _HomeScreenState extends State<HomeScreen> {
 
 Widget _getProperCercle(int index, currentIndex) {
   if (currentIndex == index) {
-    return _dot(24, ColorManager.lightBlack);
+    return _dot(32, ColorManager.lightBlack);
   } else {
-    return _dot(6, ColorManager.grey);
+    return _dot(8, ColorManager.grey);
   }
 }
 
 Widget _dot(double width, Color color) {
   return Container(
-    height: 6,
+    height: 8,
     width: width,
     decoration:
-        BoxDecoration(color: color, borderRadius: BorderRadius.circular(6)),
+        BoxDecoration(color: color, borderRadius: BorderRadius.circular(8)),
   );
 }

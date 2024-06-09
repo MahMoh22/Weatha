@@ -13,7 +13,7 @@ class AppRouter {
       case Routes.login:
         return MaterialPageRoute(builder: (_) => const LoginScreen());
       case Routes.home:
-      
+        initGetLocationModule();
         initByLocationModule();
         initByNameModule();
         return MaterialPageRoute(builder: (_) => const HomeScreen());

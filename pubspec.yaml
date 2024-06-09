@@ -80,6 +80,9 @@ dependencies:
   # Flutter plugin for reading and writing simple key-value pairs.
   shared_preferences: ^2.2.3
 
+  # Device Location
+  geolocator: ^12.0.0
+
 
 
   

@@ -14,7 +14,7 @@ class WeatherApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-          instance<HomeBloc>()..add(const GetWeatherByLocationEvent()),
+          instance<HomeBloc>()..add(const GetLocationEvent()),
       child: ScreenUtilInit(
         designSize: const Size(218, 471),
         minTextAdapt: true,

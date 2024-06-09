@@ -15,3 +15,7 @@ class GetWeatherByNameEvent extends HomeEvent {
 class GetWeatherByLocationEvent extends HomeEvent {
   const GetWeatherByLocationEvent();
 }
+
+class GetLocationEvent extends HomeEvent {
+  const GetLocationEvent();
+}
