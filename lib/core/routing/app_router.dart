@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_weather/core/di/di.dart';
 import 'package:my_weather/core/routing/routes.dart';
 import 'package:my_weather/features/home/presentation/pages/home_screen.dart';
 import 'package:my_weather/features/login/ui/login_screen.dart';
@@ -12,6 +13,9 @@ class AppRouter {
       case Routes.login:
         return MaterialPageRoute(builder: (_) => const LoginScreen());
       case Routes.home:
+      
+        initByLocationModule();
+        initByNameModule();
         return MaterialPageRoute(builder: (_) => const HomeScreen());
       default:
         return MaterialPageRoute(

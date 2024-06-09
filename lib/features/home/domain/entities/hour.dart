@@ -1,4 +1,4 @@
-import 'package:my_weather/features/home/domain/entities/hour_condition.dart';
+import 'package:my_weather/features/home/domain/entities/condition.dart';
 
 class Hour {
   String time;
@@ -22,7 +22,7 @@ class Hour {
   double visKm;
   double visMiles;
   double uv;
-  HourCondition condition;
+  Condition condition;
 
   Hour({
     required this.time,

@@ -1,29 +1,26 @@
-import 'package:my_weather/features/home/domain/entities/day_condition.dart';
+import 'package:my_weather/features/home/domain/entities/condition.dart';
 
 class Day {
-  String maxtempC;
-  String maxtempF;
-  String mintempC;
-  String mintempF;
-  String avgtempC;
-  String avgtempF;
-  String maxwindMph;
-  String maxwindKph;
-  String totalprecipMm;
-  String totalprecipIn;
-  String totalsnowCm;
-  String avgvisKm;
-  String avgvisMiles;
-  String avghumidity;
-  String dailyWillItRain;
-  String dailyChanceOfRain;
-  String dailyWillItSnow;
-  String dailyChanceOfSnow;
-  String conditionText;
-  String conditionIcon;
-  String conditionCode;
-  String uv;
-  DayCondition dayCondition;
+  double maxtempC;
+  double maxtempF;
+  double mintempC;
+  double mintempF;
+  double avgtempC;
+  double avgtempF;
+  double maxwindMph;
+  double maxwindKph;
+  double totalprecipMm;
+  double totalprecipIn;
+  double totalsnowCm;
+  double avgvisKm;
+  double avgvisMiles;
+  double avghumidity;
+  double dailyWillItRain;
+  double dailyChanceOfRain;
+  double dailyWillItSnow;
+  double dailyChanceOfSnow;
+  double uv;
+  Condition condition;
   Day({
     required this.maxtempC,
     required this.maxtempF,
@@ -38,15 +35,12 @@ class Day {
     required this.dailyChanceOfRain,
     required this.dailyWillItSnow,
     required this.dailyChanceOfSnow,
-    required this.conditionText,
-    required this.conditionIcon,
-    required this.conditionCode,
     required this.uv,
     required this.totalprecipMm,
     required this.totalprecipIn,
     required this.totalsnowCm,
     required this.avgvisKm,
     required this.avgvisMiles,
-    required this.dayCondition,
+    required this.condition,
   });
 }

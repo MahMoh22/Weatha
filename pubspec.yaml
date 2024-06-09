@@ -67,6 +67,18 @@ dependencies:
   
   # A Dart package that helps to implement value based equality without needing to explicitly override == and hashCode.
   equatable: ^2.0.5
+  
+  # Functional Programming in Dart.(Either)
+  dartz: ^0.10.1
+  
+  # A build system for Dart code generation and modular compilation.
+  build_runner: ^2.4.10
+  
+  # A pure Dart library that checks for internet connectivity.
+  internet_connection_checker: ^1.0.0+1
+
+  # Flutter plugin for reading and writing simple key-value pairs.
+  shared_preferences: ^2.2.3
 
 
 
@@ -107,8 +119,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - assets/images/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
