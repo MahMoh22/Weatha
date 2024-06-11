@@ -83,6 +83,12 @@ dependencies:
   # Device Location
   geolocator: ^12.0.0
 
+  # toggel switch
+  toggle_switch: ^2.3.0
+
+  # font awesome for flutter icons
+  font_awesome_flutter: ^10.7.0
+
 
 
   

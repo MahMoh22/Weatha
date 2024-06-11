@@ -7,6 +7,9 @@ import 'package:my_weather/features/home/presentation/bloc/home_bloc/home_bloc.d
 import 'package:my_weather/features/home/presentation/bloc/search_bloc/search_bloc.dart';
 import 'package:my_weather/features/home/presentation/pages/today_view.dart';
 import 'package:my_weather/features/home/presentation/widgets/search_container.dart';
+import 'package:my_weather/features/settings/presentation/widgets/lang.dart';
+import 'package:my_weather/features/settings/presentation/widgets/mode.dart';
+import 'package:my_weather/features/settings/presentation/widgets/units.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -48,6 +51,76 @@ class _HomeScreenState extends State<HomeScreen> {
               )
           ],
         ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: PopupMenuButton<String>(
+              
+              itemBuilder: (context) => [
+                /////////////// mode
+                const PopupMenuItem(value: 'mode', child: AppMode()
+                    // row with 2 children
+                    /*ListTile(
+                          contentPadding: const EdgeInsets.all(0),
+                          horizontalTitleGap: 4,
+                          minLeadingWidth: 25,
+                          leading: const Icon(
+                            Icons.wb_sunny_outlined,
+                            color: ColorManager.lightBlack,
+                          ),
+                          title: Text(
+                            "App Mode",
+                            style: TextStyles.font12LightBlack300,
+                          ),
+                        ),*/
+                    ),
+                ///////////////
+                /////////////// unit
+                const PopupMenuItem(value: 'Unit', child: AppUnits()
+                    // row with 2 children
+                    /*ListTile(
+                          contentPadding: const EdgeInsets.all(0),
+                          horizontalTitleGap: 4,
+                          minLeadingWidth: 25,
+                          leading: const Icon(
+                            Icons.ac_unit,
+                            color: ColorManager.lightBlack,
+                          ),
+                          title: Text(
+                            "Units",
+                            style: TextStyles.font12LightBlack300,
+                          ),
+                        ),*/
+                    ),
+                ///////////////
+                /////////////// lang
+                const PopupMenuItem(value: 'lang', child: AppLang()
+                    // row with 2 children
+                    /*ListTile(
+                          contentPadding: const EdgeInsets.all(0),
+                          horizontalTitleGap: 4,
+                          minLeadingWidth: 25,
+                          leading: const Icon(
+                            Icons.language,
+                            color: ColorManager.lightBlack,
+                          ),
+                          title: Text(
+                            "Language",
+                            style: TextStyles.font12LightBlack300,
+                          ),
+                        ),*/
+                    ),
+                ///////////////
+              ],
+              elevation: 2,
+              onSelected: (value) {
+                context.read<SearchBloc>().add(SearchDoneEvent());
+                context.read<HomeBloc>().add(const GetWeatherByLocationEvent());
+              },
+              icon: const Icon(Icons.settings, color: ColorManager.lightBlack),
+            ),
+          ),
+        ],
       ),
       body: BlocListener<SearchBloc, SearchState>(
         listener: (context, state) {
