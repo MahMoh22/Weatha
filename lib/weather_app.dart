@@ -4,7 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_weather/core/di/di.dart';
 import 'package:my_weather/core/routing/app_router.dart';
 import 'package:my_weather/core/routing/routes.dart';
-import 'package:my_weather/features/home/presentation/bloc/home_bloc.dart';
+import 'package:my_weather/features/home/presentation/bloc/home_bloc/home_bloc.dart';
+import 'package:my_weather/features/home/presentation/bloc/search_bloc/search_bloc.dart';
 
 class WeatherApp extends StatelessWidget {
   WeatherApp({super.key});
@@ -12,9 +13,13 @@ class WeatherApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>
-          instance<HomeBloc>()..add(const GetLocationEvent()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<HomeBloc>(
+            create: (context) =>
+                instance<HomeBloc>()..add(const GetLocationEvent())),
+        BlocProvider<SearchBloc>(create: (context) => instance<SearchBloc>()),
+      ],
       child: ScreenUtilInit(
         designSize: const Size(218, 471),
         minTextAdapt: true,

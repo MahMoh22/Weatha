@@ -7,9 +7,11 @@ import 'package:my_weather/features/home/data/datasources/remote_datasource.dart
 import 'package:my_weather/features/home/data/repositories/weather_repository_impl.dart';
 import 'package:my_weather/features/home/domain/repositories/weather_repository.dart';
 import 'package:my_weather/features/home/domain/usecases/get_location_usecase.dart';
+import 'package:my_weather/features/home/domain/usecases/search_city_usecase.dart';
 import 'package:my_weather/features/home/domain/usecases/weather_by_location_usecase.dart';
 import 'package:my_weather/features/home/domain/usecases/weather_by_name_usecase.dart';
-import 'package:my_weather/features/home/presentation/bloc/home_bloc.dart';
+import 'package:my_weather/features/home/presentation/bloc/home_bloc/home_bloc.dart';
+import 'package:my_weather/features/home/presentation/bloc/search_bloc/search_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:dio/dio.dart';
@@ -51,9 +53,11 @@ Future<void> initGetLocationModule() async {
     instance.registerFactory<GetLocationUsecase>(
         () => GetLocationUsecase(weatherRepository: instance()));
     instance.registerFactory<HomeBloc>(() => HomeBloc(
-        weatherByLocationUsecase: instance(),
-        weatherByNameUsecase: instance(),
-        getLocationUsecase: instance()));
+          weatherByLocationUsecase: instance(),
+          weatherByNameUsecase: instance(),
+          getLocationUsecase: instance(),
+          searchCityUsecase: instance(),
+        ));
   }
 }
 
@@ -68,5 +72,15 @@ Future<void> initByNameModule() async {
   if (!GetIt.I.isRegistered<WeatherByNameUsecase>()) {
     instance.registerFactory<WeatherByNameUsecase>(
         () => WeatherByNameUsecase(weatherRepository: instance()));
+  }
+}
+
+Future<void> initSearchNameModule() async {
+  if (!GetIt.I.isRegistered<SearchCityUsecase>()) {
+    instance.registerFactory<SearchCityUsecase>(
+        () => SearchCityUsecase(weatherRepository: instance()));
+    instance.registerFactory<SearchBloc>(() => SearchBloc(
+          searchCityUsecase: instance(),
+        ));
   }
 }

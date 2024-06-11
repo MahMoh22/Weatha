@@ -6,6 +6,8 @@ import 'package:my_weather/core/failure/failure.dart';
 import 'package:my_weather/core/networking/network_info.dart';
 import 'package:my_weather/features/home/data/datasources/remote_datasource.dart';
 import 'package:my_weather/features/home/data/mapper/home_mapper.dart';
+import 'package:my_weather/features/home/data/mapper/search_mapper.dart';
+import 'package:my_weather/features/home/domain/entities/search.dart';
 import 'package:my_weather/features/home/domain/entities/weather.dart';
 import 'package:my_weather/features/home/domain/repositories/weather_repository.dart';
 
@@ -159,6 +161,32 @@ class WeatherRepositoryImpl implements WeatherRepository {
         // continue accessing the position of the device.
         final posision = await Geolocator.getCurrentPosition();
         return Right(posision);
+      } catch (error) {
+        if (kDebugMode) {
+          print(error);
+        }
+        return Left(ErrorHandler.handler(error).failure);
+      }
+    } else {
+      //connection failure
+      return Left(DataSource.noInternetConnection.getFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<Search>>> searchCity() async {
+    if (await networkInfo.isConnected()) {
+      try {
+        //it`s connected to the internet it`s safe to call API
+        final response = await homeRemoteDatasource.searchCity();
+        if (response.searchList != null) {
+          //success
+          return Right(response.toEntity());
+        } else {
+          //Business error
+          return Left(
+              Failure(ApiInternalStatus.failure, 'Something Went Wrong'));
+        }
       } catch (error) {
         if (kDebugMode) {
           print(error);

@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:my_weather/core/failure/failure.dart';
+import 'package:my_weather/features/home/domain/entities/search.dart';
 import 'package:my_weather/features/home/domain/entities/weather.dart';
 
 abstract class WeatherRepository {
@@ -8,4 +9,5 @@ abstract class WeatherRepository {
   Future<Either<Failure, Weather>> byName();
   Future<bool> handleLocationPermission();
   Future<Either<Failure, Position>> getCurrentPosition();
+  Future<Either<Failure, List<Search>>> searchCity();
 }

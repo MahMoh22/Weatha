@@ -3,8 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:my_weather/core/theming/colors.dart';
-import 'package:my_weather/features/home/presentation/bloc/home_bloc.dart';
+import 'package:my_weather/features/home/presentation/bloc/home_bloc/home_bloc.dart';
+import 'package:my_weather/features/home/presentation/bloc/search_bloc/search_bloc.dart';
 import 'package:my_weather/features/home/presentation/pages/today_view.dart';
+import 'package:my_weather/features/home/presentation/widgets/search_container.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -16,6 +18,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final PageController _pageController = PageController();
   int currentIndex = 0;
+  bool isSearch = false;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +26,11 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         backgroundColor: ColorManager.gradientColor2,
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            isSearch = true;
+            setState(() {});
+            context.read<SearchBloc>().add(ResetStateEvent());
+          },
           icon: SvgPicture.asset(
             'assets/images/searchIc.svg',
             width: 20.w,
@@ -42,46 +49,65 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      body: BlocBuilder<HomeBloc, HomeState>(
-        builder: (context, state) {
-          if (state is HomeLoadingState) {
-            return Container(
-                height: double.infinity,
-                width: double.infinity,
-                decoration: const BoxDecoration(
-                  gradient: ColorManager.gradientBackgroundColor,
-                ),
-                child: const Center(child: CircularProgressIndicator()));
-          } else if (state is HomeFailureState) {
-            return Container(
-                height: double.infinity,
-                width: double.infinity,
-                decoration: const BoxDecoration(
-                  gradient: ColorManager.gradientBackgroundColor,
-                ),
-                child: Center(child: Text(state.message)));
-          } else if (state is HomeSuccessState) {
-            return PageView.builder(
-              controller: _pageController,
-              itemCount: 3,
-              onPageChanged: (value) {
-                setState(() {
-                  currentIndex = value;
-                });
-              },
-              itemBuilder: (context, index) {
-                return TodayView(
-                  weather: state.weather,
-                  index: index,
-                );
-              },
-            );
-          } else {
-            return const Center(
-              child: Text("Something went wrong"),
-            );
+      body: BlocListener<SearchBloc, SearchState>(
+        listener: (context, state) {
+          if (state is SearchDoneState) {
+            isSearch = false;
+            setState(() {});
           }
         },
+        child: BlocBuilder<HomeBloc, HomeState>(
+          builder: (context, state) {
+            if (state is HomeLoadingState) {
+              return Container(
+                  height: double.infinity,
+                  width: double.infinity,
+                  decoration: const BoxDecoration(
+                    gradient: ColorManager.gradientBackgroundColor,
+                  ),
+                  child: const Center(child: CircularProgressIndicator()));
+            } else if (state is HomeFailureState) {
+              return Stack(children: [
+                Container(
+                  height: double.infinity,
+                  width: double.infinity,
+                  decoration: const BoxDecoration(
+                    gradient: ColorManager.gradientBackgroundColor,
+                  ),
+                  child: Center(
+                    child: Text(state.message),
+                  ),
+                ),
+                isSearch ? SearchContainer() : const SizedBox.shrink(),
+              ]);
+            } else if (state is HomeSuccessState) {
+              return Stack(
+                children: [
+                  PageView.builder(
+                    controller: _pageController,
+                    itemCount: 3,
+                    onPageChanged: (value) {
+                      setState(() {
+                        currentIndex = value;
+                      });
+                    },
+                    itemBuilder: (context, index) {
+                      return TodayView(
+                        weather: state.weather,
+                        index: index,
+                      );
+                    },
+                  ),
+                  isSearch ? SearchContainer() : const SizedBox.shrink(),
+                ],
+              );
+            } else {
+              return const Center(
+                child: Text("Something went wrong"),
+              );
+            }
+          },
+        ),
       ),
     );
   }

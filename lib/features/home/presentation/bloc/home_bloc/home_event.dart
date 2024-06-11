@@ -8,8 +8,7 @@ abstract class HomeEvent extends Equatable {
 }
 
 class GetWeatherByNameEvent extends HomeEvent {
-  final String cityName;
-  const GetWeatherByNameEvent(this.cityName);
+  const GetWeatherByNameEvent();
 }
 
 class GetWeatherByLocationEvent extends HomeEvent {

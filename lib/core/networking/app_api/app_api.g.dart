@@ -36,7 +36,6 @@ class _AppServiceClient implements AppServiceClient {
             .compose(
               _dio.options,
               '/forecast.json?key=7b46ffb131da4cc4a60212247243005&q=${appPreferences.getLat()},${appPreferences.getLong()}&days=3&aqi=no&alerts=no&lang=${appPreferences.getLang()}',
-              //'/forecast.json?key=7b46ffb131da4cc4a60212247243005&q=48.8567,2.3508&days=3&aqi=no&alerts=no&lang=en',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -73,6 +72,33 @@ class _AppServiceClient implements AppServiceClient {
               baseUrl,
             ))));
     final value = WeatherResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<SearchResponse> searchCity() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const List<dynamic>? _data = null;
+    final _result =
+        await _dio.fetch<List<dynamic>>(_setStreamType<SearchResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'http://api.weatherapi.com/v1/search.json?key=7b46ffb131da4cc4a60212247243005&q=${appPreferences.getSearchText()}',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = SearchResponse.fromJson(_result.data!);
     return value;
   }
 
