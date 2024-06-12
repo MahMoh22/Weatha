@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
+import 'package:my_weather/core/di/di.dart';
+import 'package:my_weather/core/helper/app_perfs.dart';
 import 'package:my_weather/core/theming/colors.dart';
 import 'package:my_weather/core/theming/text_styles_manager.dart';
 import 'package:my_weather/features/home/domain/entities/weather.dart';
 
 class HoursList extends StatelessWidget {
-  const HoursList({super.key, required this.weather, required this.index});
+  HoursList({super.key, required this.weather, required this.index});
+  final AppPreferences appPreferences = instance();
   final Weather weather;
   final int index;
   @override
@@ -44,7 +47,9 @@ class HoursList extends StatelessWidget {
                           'https:${weather.forcast.forcastDay[index].hour[i].condition.icon}',
                         )),
                     Text(
-                      '${weather.forcast.forcastDay[index].hour[i].tempC.round().toString()} °',
+                      appPreferences.getUnits() == 'C'
+                          ? '${weather.forcast.forcastDay[index].hour[i].tempC.round().toString()} °'
+                          : '${weather.forcast.forcastDay[index].hour[i].tempF.round().toString()} °',
                       style: TextStyles.font8LightBlack700,
                     ),
                   ],

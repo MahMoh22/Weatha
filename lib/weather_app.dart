@@ -29,7 +29,7 @@ class WeatherApp extends StatelessWidget {
         minTextAdapt: true,
         child: BlocBuilder<SettingsBloc, SettingsState>(
           builder: (context, state) => MaterialApp(
-            title: 'Weather App',
+            title: 'weza',
             theme: context.read<SettingsBloc>().themeStyle,
             //darkTheme: ThemeDataStyle.dark,
             //themeMode: ThemeMode.system,

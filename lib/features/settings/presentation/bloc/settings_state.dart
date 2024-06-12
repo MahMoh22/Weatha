@@ -9,8 +9,10 @@ abstract class SettingsState extends Equatable {
 
 class SettingsInitial extends SettingsState {}
 
-class SettingsTHemeLoadingState extends SettingsState {}
+class SettingsThemeLoadingState extends SettingsState {}
 
-class SettingsTHemeFailureState extends SettingsState {}
+class SettingsThemeFailureState extends SettingsState {}
 
-class SettingsTHemeSuccessState extends SettingsState {}
+class SettingsThemeSuccessState extends SettingsState {}
+
+class SettingsUnitsSuccessState extends SettingsState {}

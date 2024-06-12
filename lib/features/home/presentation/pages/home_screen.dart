@@ -93,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                 ///////////////
                 /////////////// unit
-                const PopupMenuItem(value: 'Unit', child: AppUnits()
+                PopupMenuItem(value: 'Unit', child: AppUnits()
                     // row with 2 children
                     /*ListTile(
                           contentPadding: const EdgeInsets.all(0),
@@ -140,13 +140,22 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      body: BlocListener<SearchBloc, SearchState>(
-        listener: (context, state) {
-          if (state is SearchDoneState) {
-            isSearch = false;
-            setState(() {});
-          }
-        },
+      body: MultiBlocListener(
+        listeners: [
+          BlocListener<SearchBloc, SearchState>(
+            listener: (context, state) {
+              if (state is SearchDoneState) {
+                isSearch = false;
+                setState(() {});
+              }
+            },
+          ),
+          BlocListener<SettingsBloc, SettingsState>(listener: (context, state) {
+            if (state is SettingsUnitsSuccessState) {
+              setState(() {});
+            }
+          }),
+        ],
         child: BlocBuilder<HomeBloc, HomeState>(
           builder: (context, state) {
             if (state is HomeLoadingState) {

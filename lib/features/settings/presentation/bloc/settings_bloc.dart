@@ -17,11 +17,19 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
         emit(SettingsInitial());
 
         themeStyle = ThemeDataStyle.light;
-        emit(SettingsTHemeSuccessState());
+        emit(SettingsThemeSuccessState());
       } else if (event is DarkThemeEvent) {
         emit(SettingsInitial());
         themeStyle = ThemeDataStyle.dark;
-        emit(SettingsTHemeSuccessState());
+        emit(SettingsThemeSuccessState());
+      } else if (event is UnitsFahrenheitEvent) {
+        emit(SettingsInitial());
+        appPreferences.setUnits('F');
+        emit(SettingsUnitsSuccessState());
+      } else if (event is UnitsCelesiusEvent) {
+        emit(SettingsInitial());
+        appPreferences.setUnits('C');
+        emit(SettingsUnitsSuccessState());
       }
     });
   }

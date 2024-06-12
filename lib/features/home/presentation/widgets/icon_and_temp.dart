@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:my_weather/core/di/di.dart';
+import 'package:my_weather/core/helper/app_perfs.dart';
 import 'package:my_weather/features/home/domain/entities/weather.dart';
 import 'package:my_weather/core/theming/text_styles_manager.dart';
 
 class IconAndTemp extends StatelessWidget {
-  const IconAndTemp({super.key, required this.weather, required this.index});
+  IconAndTemp({super.key, required this.weather, required this.index});
+  final AppPreferences appPreferences = instance();
   final Weather weather;
   final int index;
   @override
@@ -29,9 +32,13 @@ class IconAndTemp extends StatelessWidget {
                 Column(
                   children: [
                     Text(
-                      weather.forcast.forcastDay[index].day.avgtempC
-                          .round()
-                          .toString(), // temp
+                      appPreferences.getUnits() == 'C'
+                          ? weather.forcast.forcastDay[index].day.avgtempC
+                              .round()
+                              .toString()
+                          : weather.forcast.forcastDay[index].day.avgtempF
+                              .round()
+                              .toString(), // temp
                       style: TextStyles.font43LightBlack700
                           .copyWith(color: Theme.of(context).colorScheme.scrim),
                     ),
@@ -48,7 +55,7 @@ class IconAndTemp extends StatelessWidget {
                   ],
                 ),
                 Text(
-                  '°C', // unit
+                  appPreferences.getUnits() == 'C' ? '°C' : '°F', // unit
                   style: TextStyles.font12LightBlack300
                       .copyWith(color: Theme.of(context).colorScheme.scrim),
                 ),

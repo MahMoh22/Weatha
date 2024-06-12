@@ -6,6 +6,7 @@ const String prefsKeyLang = "PREFS_KEY_LANG";
 const String prefsKeyName = "PREFS_KEY_NAME";
 const String prefsKeySearchText = "PREFS_KEY_SEARCH_TEXT";
 const String prefsKeyTheme = "PREFS_KEY_THEME";
+const String prefsKeyUnits = "PREFS_KEY_UNITS";
 
 class AppPreferences {
   final SharedPreferences _preferences;
@@ -57,5 +58,13 @@ class AppPreferences {
 
   String getTheme() {
     return _preferences.getString(prefsKeyTheme) ?? "";
+  }
+
+  Future<void> setUnits(String? unit) async {
+    _preferences.setString(prefsKeyUnits, unit ?? "C");
+  }
+
+  String getUnits() {
+    return _preferences.getString(prefsKeyUnits) ?? "C";
   }
 }

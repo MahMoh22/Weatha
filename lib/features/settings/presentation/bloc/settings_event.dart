@@ -10,3 +10,7 @@ abstract class SettingsEvent extends Equatable {
 class LightThemeEvent extends SettingsEvent {}
 
 class DarkThemeEvent extends SettingsEvent {}
+
+class UnitsCelesiusEvent extends SettingsEvent {}
+
+class UnitsFahrenheitEvent extends SettingsEvent {}
