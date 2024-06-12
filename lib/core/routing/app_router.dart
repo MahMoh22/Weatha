@@ -17,6 +17,7 @@ class AppRouter {
         initByLocationModule();
         initByNameModule();
         initSearchNameModule();
+        initSettingsModule();
         return MaterialPageRoute(builder: (_) => const HomeScreen());
       default:
         return MaterialPageRoute(

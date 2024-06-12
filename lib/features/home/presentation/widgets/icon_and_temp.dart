@@ -32,14 +32,16 @@ class IconAndTemp extends StatelessWidget {
                       weather.forcast.forcastDay[index].day.avgtempC
                           .round()
                           .toString(), // temp
-                      style: TextStyles.font43LightBlack700,
+                      style: TextStyles.font43LightBlack700
+                          .copyWith(color: Theme.of(context).colorScheme.scrim),
                     ),
                     SizedBox(
                       width: 65.w,
                       child: Text(
                         weather.forcast.forcastDay[index].day.condition
                             .text, // description
-                        style: TextStyles.font12LightBlack300,
+                        style: TextStyles.font12LightBlack300.copyWith(
+                            color: Theme.of(context).colorScheme.scrim),
                         textAlign: TextAlign.center,
                       ),
                     ),
@@ -47,7 +49,8 @@ class IconAndTemp extends StatelessWidget {
                 ),
                 Text(
                   '°C', // unit
-                  style: TextStyles.font12LightBlack300,
+                  style: TextStyles.font12LightBlack300
+                      .copyWith(color: Theme.of(context).colorScheme.scrim),
                 ),
               ],
             ),

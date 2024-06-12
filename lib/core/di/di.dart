@@ -12,6 +12,7 @@ import 'package:my_weather/features/home/domain/usecases/weather_by_location_use
 import 'package:my_weather/features/home/domain/usecases/weather_by_name_usecase.dart';
 import 'package:my_weather/features/home/presentation/bloc/home_bloc/home_bloc.dart';
 import 'package:my_weather/features/home/presentation/bloc/search_bloc/search_bloc.dart';
+import 'package:my_weather/features/settings/presentation/bloc/settings_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:dio/dio.dart';
@@ -82,5 +83,11 @@ Future<void> initSearchNameModule() async {
     instance.registerFactory<SearchBloc>(() => SearchBloc(
           searchCityUsecase: instance(),
         ));
+  }
+}
+
+Future<void> initSettingsModule() async {
+  if (!GetIt.I.isRegistered<SettingsBloc>()) {
+    instance.registerFactory<SettingsBloc>(() => SettingsBloc());
   }
 }

@@ -5,6 +5,7 @@ const String prefsKeyLat = "PREFS_KEY_LAT";
 const String prefsKeyLang = "PREFS_KEY_LANG";
 const String prefsKeyName = "PREFS_KEY_NAME";
 const String prefsKeySearchText = "PREFS_KEY_SEARCH_TEXT";
+const String prefsKeyTheme = "PREFS_KEY_THEME";
 
 class AppPreferences {
   final SharedPreferences _preferences;
@@ -41,11 +42,20 @@ class AppPreferences {
   String getName() {
     return _preferences.getString(prefsKeyName) ?? "";
   }
+
   Future<void> setSearchText(String? text) async {
     _preferences.setString(prefsKeySearchText, text ?? "");
   }
 
   String getSearchText() {
     return _preferences.getString(prefsKeySearchText) ?? "";
+  }
+
+  Future<void> setTheme(String? mode) async {
+    _preferences.setString(prefsKeyTheme, mode ?? "");
+  }
+
+  String getTheme() {
+    return _preferences.getString(prefsKeyTheme) ?? "";
   }
 }

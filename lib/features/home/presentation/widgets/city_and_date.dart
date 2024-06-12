@@ -17,18 +17,21 @@ class CityAndDate extends StatelessWidget {
         children: [
           Text(
             '${weather.location.name},', // city
-            style: TextStyles.font20LightBlack500,
+            style: TextStyles.font20LightBlack500
+                .copyWith(color: Theme.of(context).colorScheme.scrim),
           ),
           Text(
             weather.location.country, // country
-            style: TextStyles.font20LightBlack500,
+            style: TextStyles.font20LightBlack500
+                .copyWith(color: Theme.of(context).colorScheme.scrim),
           ),
           Row(
             children: [
               Text(
                 DateFormat.MMMEd().format(DateTime.parse(
                     weather.forcast.forcastDay[index].date)), // date
-                style: TextStyles.font10Gray400,
+                style: TextStyles.font10Gray400
+                    .copyWith(color: Theme.of(context).colorScheme.surface),
               ),
               /*Text(
                 ' ${weather.localtime}',
