@@ -62,7 +62,6 @@ class IconAndTemp extends StatelessWidget {
               ],
             ),
           ),
-          //horizontalSpace(10.w)
         ],
       ),
     );

@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+import 'package:my_weather/core/localization/app_localization.dart';
+
 extension NonNullString on String? {
   String orEmpty() {
     if (this == null) {
@@ -25,5 +28,17 @@ extension NonNullDouble on double? {
     } else {
       return this!;
     }
+  }
+}
+
+extension TranslateWhoutArgs on String {
+  String tr(BuildContext context) {
+    return AppLocalizations.of(context)!.translate(this);
+  }
+}
+
+extension TranslateWithArg on String {
+  String trWithArg(BuildContext context, Map<String, dynamic> args) {
+    return AppLocalizations.of(context)!.translateWithArgs(this, args);
   }
 }

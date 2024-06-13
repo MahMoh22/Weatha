@@ -14,3 +14,7 @@ class DarkThemeEvent extends SettingsEvent {}
 class UnitsCelesiusEvent extends SettingsEvent {}
 
 class UnitsFahrenheitEvent extends SettingsEvent {}
+
+class LangEnglishEvent extends SettingsEvent {}
+
+class LangArabicEvent extends SettingsEvent {}

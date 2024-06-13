@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_weather/core/di/di.dart';
 import 'package:my_weather/core/helper/app_perfs.dart';
+import 'package:my_weather/core/helper/extentions.dart';
 import 'package:my_weather/core/theming/text_styles_manager.dart';
 import 'package:my_weather/features/home/presentation/bloc/home_bloc/home_bloc.dart';
 import 'package:my_weather/features/home/presentation/bloc/search_bloc/search_bloc.dart';
@@ -31,10 +32,6 @@ class SearchContainer extends StatelessWidget {
                   },
                   onTap: () {
                     BlocProvider.of<SearchBloc>(context).add(SearchDoneEvent());
-                    /*context.read<SearchBloc>().add(const SearchDoneEvent());*/
-                    /*context
-                        .read<HomeBloc>()
-                        .add(const GetWeatherByLocationEvent());*/
                   },
                   child: Container(
                     padding: EdgeInsets.symmetric(horizontal: 4.w),
@@ -79,7 +76,7 @@ class SearchContainer extends StatelessWidget {
                             color: Theme.of(context).colorScheme.primary,
                           ),
                           title: Text(
-                            "Current Location",
+                            "current_location".tr(context),
                             style: TextStyles.font12LightBlack300,
                           ),
                         ),
@@ -95,7 +92,7 @@ class SearchContainer extends StatelessWidget {
                     icon: const Icon(Icons.add),
                   ),
                   prefixIconColor: Theme.of(context).colorScheme.primary,
-                  hintText: 'Search a city weather',
+                  hintText: 'Search_a_city_weather'.tr(context),
                 ),
               ),
             ),
@@ -125,7 +122,7 @@ class SearchContainer extends StatelessWidget {
                     ),
                   );
                 } else {
-                  return const Center(child: Text('No Results'));
+                  return Center(child: Text('No_Results'.tr(context)));
                 }
               } else if (state is SearchFailureState) {
                 return Text(state.message);

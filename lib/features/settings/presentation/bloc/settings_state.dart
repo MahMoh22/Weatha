@@ -16,3 +16,4 @@ class SettingsThemeFailureState extends SettingsState {}
 class SettingsThemeSuccessState extends SettingsState {}
 
 class SettingsUnitsSuccessState extends SettingsState {}
+class SettingsLangSuccessState extends SettingsState {}

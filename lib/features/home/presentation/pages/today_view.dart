@@ -33,16 +33,19 @@ class TodayView extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              /*HomeSearchBar(
-                title: 'Today',
-              ),*/
-              CityAndDate(
-                weather: weather,
-                index: index,
+              Directionality(
+                textDirection: TextDirection.ltr,
+                child: CityAndDate(
+                  weather: weather,
+                  index: index,
+                ),
               ),
-              IconAndTemp(
-                weather: weather,
-                index: index,
+              Directionality(
+                textDirection: TextDirection.ltr,
+                child: IconAndTemp(
+                  weather: weather,
+                  index: index,
+                ),
               ),
               ThreeListTile(
                 weather: weather,

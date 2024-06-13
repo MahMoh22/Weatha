@@ -12,6 +12,7 @@ class AppUnits extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ToggleSwitch(
+      textDirectionRTL: appPreferences.getLang() == 'ar' ? true : false,
       minWidth: 90.0,
       initialLabelIndex: appPreferences.getUnits() == 'C' ? 0 : 1,
       cornerRadius: 20.0,

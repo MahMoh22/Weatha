@@ -25,7 +25,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     required this.searchCityUsecase,
   }) : super(HomeInitial()) {
     on<HomeEvent>((event, emit) async {
-      appPreferences.setLang('en');
       if (event is GetWeatherByNameEvent) {
         emit(HomeLoadingState());
         (await weatherByNameUsecase.excute()).fold(

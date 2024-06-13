@@ -30,6 +30,14 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
         emit(SettingsInitial());
         appPreferences.setUnits('C');
         emit(SettingsUnitsSuccessState());
+      } else if (event is LangEnglishEvent) {
+        emit(SettingsInitial());
+        appPreferences.setLang('en');
+        emit(SettingsLangSuccessState());
+      } else if (event is LangArabicEvent) {
+        emit(SettingsInitial());
+        appPreferences.setLang('ar');
+        emit(SettingsLangSuccessState());
       }
     });
   }

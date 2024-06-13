@@ -33,10 +33,6 @@ class CityAndDate extends StatelessWidget {
                 style: TextStyles.font10Gray400
                     .copyWith(color: Theme.of(context).colorScheme.surface),
               ),
-              /*Text(
-                ' ${weather.localtime}',
-                style: TextStyles.font10Gray400,
-              ),*/
             ],
           ),
         ],

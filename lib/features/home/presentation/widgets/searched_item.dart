@@ -23,9 +23,6 @@ Widget searchedItem(
             '${placeItem.name} ${placeItem.region} ${placeItem.country}');
         BlocProvider.of<SearchBloc>(context).add(SearchDoneEvent());
         BlocProvider.of<HomeBloc>(context).add(const GetWeatherByNameEvent());
-        // context.read<HomeBloc>().add(const SearchDoneEvent());
-        // context.read<HomeBloc>().add(const GetWeatherByNameEvent());
-
         textEditingController.text =
             '${placeItem.name} ${placeItem.region} ${placeItem.country}';
       },

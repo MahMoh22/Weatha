@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:my_weather/core/di/di.dart';
+import 'package:my_weather/core/helper/app_perfs.dart';
 import 'package:my_weather/core/theming/colors.dart';
 import 'package:my_weather/core/theming/text_styles_manager.dart';
 
 class ListTileContainer extends StatelessWidget {
-  const ListTileContainer({
+  ListTileContainer({
     super.key,
     required this.image,
     required this.title,
     required this.trailing,
     this.isTop = false,
   });
+  final AppPreferences appPreferences = instance();
   final String image;
   final String title;
   final String trailing;
@@ -39,8 +42,9 @@ class ListTileContainer extends StatelessWidget {
           trailing,
           style: TextStyles.font8LightBlack400,
         ),
-        contentPadding:
-            EdgeInsets.only(left: 4.w, right: 20.w, top: 2.h, bottom: 2.h),
+        contentPadding: appPreferences.getLang() == 'ar'
+            ? EdgeInsets.only(left: 20.w, right: 4.w, top: 2.h, bottom: 2.h)
+            : EdgeInsets.only(left: 4.w, right: 20.w, top: 2.h, bottom: 2.h),
         horizontalTitleGap: 2.w,
         minLeadingWidth: 0.w,
         visualDensity: const VisualDensity(horizontal: -4, vertical: 0),

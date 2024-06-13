@@ -14,6 +14,7 @@ class AppMode extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ToggleSwitch(
+      textDirectionRTL: appPreferences.getLang() == 'ar' ? true : false,
       minWidth: 70.w,
       minHeight: 30.h,
       initialLabelIndex:
