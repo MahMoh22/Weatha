@@ -7,8 +7,8 @@ import 'package:my_weather/core/di/di.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() async {
-  Bloc.observer = MyBlocObserver();
   WidgetsFlutterBinding.ensureInitialized();
+  Bloc.observer = MyBlocObserver();
   await ScreenUtil.ensureScreenSize();
   await initAppModule();
   await initSettingsModule();

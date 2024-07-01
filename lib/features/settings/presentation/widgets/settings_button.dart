@@ -17,6 +17,7 @@ class SettingsButton extends StatelessWidget {
     return IconButton(
       onPressed: () {},
       icon: PopupMenuButton<String>(
+        color: Colors.white54,
         itemBuilder: (context) => [
           // mode
           PopupMenuItem(value: 'mode', child: AppMode()),
