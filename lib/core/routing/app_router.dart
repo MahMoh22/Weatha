@@ -4,7 +4,7 @@ import 'package:my_weather/core/routing/routes.dart';
 import 'package:my_weather/features/home/presentation/pages/home_screen.dart';
 
 class AppRouter {
-  Route onGenerateRoute(RouteSettings settings) {
+  Route? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case Routes.home:
         initGetLocationModule();
@@ -14,11 +14,12 @@ class AppRouter {
         initSettingsModule();
         return MaterialPageRoute(builder: (_) => const HomeScreen());
       default:
-        return MaterialPageRoute(
+        return null;
+      /*MaterialPageRoute(
             builder: (_) => Scaffold(
                   body: Center(
                       child: Text('No route defined for ${settings.name}')),
-                ));
+                ));*/
     }
   }
 }

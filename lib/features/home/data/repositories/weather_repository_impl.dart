@@ -99,12 +99,12 @@ class WeatherRepositoryImpl implements WeatherRepository {
 
   @override
   Future<Either<Failure, Position>> getCurrentPosition() async {
-    /*
+    
     if (await networkInfo.isConnected()) {
       try {
         final hasPermission = await handleLocationPermission();
         if (!hasPermission) {
-          return Left(Failure(1, 'Location Permission Needed'));
+          return Left(Failure(1, 'Location Permission Needed, Please Enable Location Services.'));
         }
         final position = await Geolocator.getCurrentPosition(
             desiredAccuracy: LocationAccuracy.high);
@@ -119,8 +119,9 @@ class WeatherRepositoryImpl implements WeatherRepository {
       //connection failure
       return Left(DataSource.noInternetConnection.getFailure());
     }
-    */
-    if (await networkInfo.isConnected()) {
+    
+
+    /*if (await networkInfo.isConnected()) {
       try {
         bool serviceEnabled;
         LocationPermission permission;
@@ -170,7 +171,7 @@ class WeatherRepositoryImpl implements WeatherRepository {
     } else {
       //connection failure
       return Left(DataSource.noInternetConnection.getFailure());
-    }
+    } */
   }
 
   @override
