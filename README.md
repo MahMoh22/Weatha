@@ -9,15 +9,25 @@ Wetha App is a Flutter application that provides real-time weather information f
 ##### - Hourly and Daily Forecasts:
 ##### - View hourly and daily weather forecasts.
 ##### - Plan ahead with accurate predictions.
+![settings_button](https://github.com/MahMoh22/my_weather/assets/97848609/1cf268c5-d557-4f1d-895a-a9647a8bf711)
+
 ### City Search:
 ##### - Search for weather information in any city.
 ##### - Get suggestions as you type.
+![search](https://github.com/MahMoh22/my_weather/assets/97848609/efe19a0d-3bee-4446-bcf5-89fd376aa76d)
+
 ### Themes and Languages:
 ##### - Choose between light and dark themes.
+![dark](https://github.com/MahMoh22/my_weather/assets/97848609/19df6e66-2832-403c-af73-e709dba54822)
+
 ##### - Switch between Arabic and English languages.
+![arabic](https://github.com/MahMoh22/my_weather/assets/97848609/847fb267-4587-4eb1-9282-82881c76ac79)
+
 ### Unit Conversion:
 ##### - Toggle between Celsius and Fahrenheit for temperature.
 ##### - Select Km/h or Mph for wind speed.
+![fehrenhit](https://github.com/MahMoh22/my_weather/assets/97848609/30053146-dc61-49a1-a5a3-6e2daeefd664)
+
 ## Getting Started
 ### API:
 WeatherAPI.com provides access to free weather and geo data via a JSON/XML restful API. It allows developers to create desktop, web and mobile applications using this data very easy.
@@ -75,4 +85,11 @@ WeatherAPI.com provides access to free weather and geo data via a JSON/XML restf
   #### - font awesome for flutter icons
   ##### font_awesome_flutter: ^10.7.0
 ### Screenshots
-!Screenshot 1 !Screenshot 2
+#### Light Splash Screen
+![light_splash](https://github.com/MahMoh22/my_weather/assets/97848609/b27f392f-f771-4aca-b762-691f7657fda3)
+
+#### Dark Splash Screen
+![dark_splash](https://github.com/MahMoh22/my_weather/assets/97848609/f90227b7-e482-49cb-8311-951884f315bf)
+
+#### Location Access
+![location_permisson](https://github.com/MahMoh22/my_weather/assets/97848609/097dea1e-a3ce-4a87-9d6b-ad89608f2608)
